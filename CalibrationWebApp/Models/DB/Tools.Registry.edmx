@@ -1,0 +1,561 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Tools_RegistryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EmployeeProfile">
+          <Key>
+            <PropertyRef Name="EmployeeProfileID" />
+          </Key>
+          <Property Name="EmployeeProfileID" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="SYSUserID" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Location" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="RowCreatedSYSUserID" Type="int" Nullable="false" />
+          <Property Name="RowCreatedDateTime" Type="datetime" />
+          <Property Name="RowModifiedSYSUserID" Type="int" Nullable="false" />
+          <Property Name="RowModifiedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="InstrumentInventory">
+          <Key>
+            <PropertyRef Name="InstrumentID" />
+          </Key>
+          <Property Name="InstrumentID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PlantID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SYSUserID" Type="int" Nullable="false" />
+          <Property Name="InstrumentBrand" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="InstrumentDesc" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CalibrationDueDate" Type="datetime" Nullable="false" />
+          <Property Name="RowCreatedSYSUserID" Type="int" Nullable="false" />
+          <Property Name="RowCReatedDateTime" Type="datetime" />
+          <Property Name="RowModifiedSYSUserID" Type="int" Nullable="false" />
+          <Property Name="RowModifiedDateTime" Type="datetime" />
+          <Property Name="Comments" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="LOOKUPRole">
+          <Key>
+            <PropertyRef Name="LOOKUPRoleID" />
+          </Key>
+          <Property Name="LOOKUPRoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="100" />
+          <Property Name="RoleDesc" Type="varchar" MaxLength="500" />
+          <Property Name="RowCreatedSYSUSerID" Type="int" Nullable="false" />
+          <Property Name="RowCreatedDateTime" Type="datetime" />
+          <Property Name="RowModifiedSYSUserID" Type="int" Nullable="false" />
+          <Property Name="RowModifiedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PlantsCollection">
+          <Key>
+            <PropertyRef Name="PlantID" />
+          </Key>
+          <Property Name="PlantID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PlantDesc" Type="varchar" MaxLength="100" />
+          <Property Name="RowCreatedSYSUserID" Type="int" Nullable="false" />
+          <Property Name="RowCReatedDateTime" Type="datetime" />
+          <Property Name="RowModifiedSYSUserID" Type="int" Nullable="false" />
+          <Property Name="RowModifiedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SYSUser">
+          <Key>
+            <PropertyRef Name="SYSUserID" />
+          </Key>
+          <Property Name="SYSUserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoginName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasswordHash" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="RowCreatedSYSUSerID" Type="int" Nullable="false" />
+          <Property Name="RowCreatedDateTime" Type="datetime" />
+          <Property Name="RowModifiedSYSUserID" Type="int" Nullable="false" />
+          <Property Name="RowModifiedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SYSUserRole">
+          <Key>
+            <PropertyRef Name="SYSUserRoleID" />
+          </Key>
+          <Property Name="SYSUserRoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SYSUserID" Type="int" Nullable="false" />
+          <Property Name="LOOKUPRoleID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="RowCreatedSYSUserID" Type="int" Nullable="false" />
+          <Property Name="RowCreatedDateTime" Type="datetime" />
+          <Property Name="RowModifiedSYSUserID" Type="int" Nullable="false" />
+          <Property Name="RowModifiedDateTime" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Tools_Registry.dbo.TOOL_CALIBRATION_VIEW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TOOL_CALIBRATION_VIEW">
+          <Key>
+            <PropertyRef Name="SYSUserID" />
+            <PropertyRef Name="EmployeeProfileID" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="EmailAddress" />
+            <PropertyRef Name="Location" />
+            <PropertyRef Name="InstrumentID" />
+            <PropertyRef Name="PlantID" />
+            <PropertyRef Name="InstrumentBrand" />
+            <PropertyRef Name="InstrumentDesc" />
+            <PropertyRef Name="CalibrationDueDate" />
+          </Key>
+          <Property Name="SYSUserID" Type="int" Nullable="false" />
+          <Property Name="EmployeeProfileID" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Location" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="InstrumentID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PlantID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="InstrumentBrand" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="InstrumentDesc" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CalibrationDueDate" Type="datetime" Nullable="false" />
+          <Property Name="Comments" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="FK__EmployeeP__SYSUs__7E37BEF6">
+          <End Role="SYSUser" Type="Self.SYSUser" Multiplicity="1" />
+          <End Role="EmployeeProfile" Type="Self.EmployeeProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYSUser">
+              <PropertyRef Name="SYSUserID" />
+            </Principal>
+            <Dependent Role="EmployeeProfile">
+              <PropertyRef Name="SYSUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Instrumen__Plant__787EE5A0">
+          <End Role="PlantsCollection" Type="Self.PlantsCollection" Multiplicity="1" />
+          <End Role="InstrumentInventory" Type="Self.InstrumentInventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlantsCollection">
+              <PropertyRef Name="PlantID" />
+            </Principal>
+            <Dependent Role="InstrumentInventory">
+              <PropertyRef Name="PlantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Instrumen__SYSUs__797309D9">
+          <End Role="SYSUser" Type="Self.SYSUser" Multiplicity="1" />
+          <End Role="InstrumentInventory" Type="Self.InstrumentInventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYSUser">
+              <PropertyRef Name="SYSUserID" />
+            </Principal>
+            <Dependent Role="InstrumentInventory">
+              <PropertyRef Name="SYSUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SYSUserRo__LOOKU__4F7CD00D">
+          <End Role="LOOKUPRole" Type="Self.LOOKUPRole" Multiplicity="1" />
+          <End Role="SYSUserRole" Type="Self.SYSUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOOKUPRole">
+              <PropertyRef Name="LOOKUPRoleID" />
+            </Principal>
+            <Dependent Role="SYSUserRole">
+              <PropertyRef Name="LOOKUPRoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SYSUserRo__SYSUs__5070F446">
+          <End Role="SYSUser" Type="Self.SYSUser" Multiplicity="1" />
+          <End Role="SYSUserRole" Type="Self.SYSUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYSUser">
+              <PropertyRef Name="SYSUserID" />
+            </Principal>
+            <Dependent Role="SYSUserRole">
+              <PropertyRef Name="SYSUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Tools_RegistryModelStoreContainer">
+          <EntitySet Name="EmployeeProfile" EntityType="Self.EmployeeProfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InstrumentInventory" EntityType="Self.InstrumentInventory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOOKUPRole" EntityType="Self.LOOKUPRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlantsCollection" EntityType="Self.PlantsCollection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SYSUser" EntityType="Self.SYSUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SYSUserRole" EntityType="Self.SYSUserRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TOOL_CALIBRATION_VIEW" EntityType="Self.TOOL_CALIBRATION_VIEW" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TOOL_CALIBRATION_VIEW].[SYSUserID] AS [SYSUserID], 
+    [TOOL_CALIBRATION_VIEW].[EmployeeProfileID] AS [EmployeeProfileID], 
+    [TOOL_CALIBRATION_VIEW].[FirstName] AS [FirstName], 
+    [TOOL_CALIBRATION_VIEW].[LastName] AS [LastName], 
+    [TOOL_CALIBRATION_VIEW].[EmailAddress] AS [EmailAddress], 
+    [TOOL_CALIBRATION_VIEW].[Location] AS [Location], 
+    [TOOL_CALIBRATION_VIEW].[InstrumentID] AS [InstrumentID], 
+    [TOOL_CALIBRATION_VIEW].[PlantID] AS [PlantID], 
+    [TOOL_CALIBRATION_VIEW].[InstrumentBrand] AS [InstrumentBrand], 
+    [TOOL_CALIBRATION_VIEW].[InstrumentDesc] AS [InstrumentDesc], 
+    [TOOL_CALIBRATION_VIEW].[CalibrationDueDate] AS [CalibrationDueDate], 
+    [TOOL_CALIBRATION_VIEW].[Comments] AS [Comments]
+    FROM [dbo].[TOOL_CALIBRATION_VIEW] AS [TOOL_CALIBRATION_VIEW]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__EmployeeP__SYSUs__7E37BEF6" Association="Self.FK__EmployeeP__SYSUs__7E37BEF6">
+            <End Role="SYSUser" EntitySet="SYSUser" />
+            <End Role="EmployeeProfile" EntitySet="EmployeeProfile" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Instrumen__Plant__787EE5A0" Association="Self.FK__Instrumen__Plant__787EE5A0">
+            <End Role="PlantsCollection" EntitySet="PlantsCollection" />
+            <End Role="InstrumentInventory" EntitySet="InstrumentInventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Instrumen__SYSUs__797309D9" Association="Self.FK__Instrumen__SYSUs__797309D9">
+            <End Role="SYSUser" EntitySet="SYSUser" />
+            <End Role="InstrumentInventory" EntitySet="InstrumentInventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SYSUserRo__LOOKU__4F7CD00D" Association="Self.FK__SYSUserRo__LOOKU__4F7CD00D">
+            <End Role="LOOKUPRole" EntitySet="LOOKUPRole" />
+            <End Role="SYSUserRole" EntitySet="SYSUserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SYSUserRo__SYSUs__5070F446" Association="Self.FK__SYSUserRo__SYSUs__5070F446">
+            <End Role="SYSUser" EntitySet="SYSUser" />
+            <End Role="SYSUserRole" EntitySet="SYSUserRole" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Tools_RegistryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="LOOKUPRole">
+          <Key>
+            <PropertyRef Name="LOOKUPRoleID" />
+          </Key>
+          <Property Name="LOOKUPRoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RoleDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="RowCreatedSYSUSerID" Type="Int32" Nullable="false" />
+          <Property Name="RowCreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="RowModifiedSYSUserID" Type="Int32" Nullable="false" />
+          <Property Name="RowModifiedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="SYSUserRoles" Relationship="Tools_RegistryModel.FK__SYSUserRo__LOOKU__4F7CD00D" FromRole="LOOKUPRole" ToRole="SYSUserRole" />
+        </EntityType>
+        <EntityType Name="SYSUser">
+          <Key>
+            <PropertyRef Name="SYSUserID" />
+          </Key>
+          <Property Name="SYSUserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoginName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RowCreatedSYSUSerID" Type="Int32" Nullable="false" />
+          <Property Name="RowCreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="RowModifiedSYSUserID" Type="Int32" Nullable="false" />
+          <Property Name="RowModifiedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="SYSUserRoles" Relationship="Tools_RegistryModel.FK__SYSUserRo__SYSUs__5070F446" FromRole="SYSUser" ToRole="SYSUserRole" />
+          <NavigationProperty Name="EmployeeProfiles" Relationship="Tools_RegistryModel.FK__EmployeeP__SYSUs__7E37BEF6" FromRole="SYSUser" ToRole="EmployeeProfile" />
+          <NavigationProperty Name="InstrumentInventories" Relationship="Tools_RegistryModel.FK__Instrumen__SYSUs__797309D9" FromRole="SYSUser" ToRole="InstrumentInventory" />
+        </EntityType>
+        <EntityContainer Name="Tools_Registry_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="LOOKUPRoles" EntityType="Self.LOOKUPRole" />
+          <EntitySet Name="SYSUsers" EntityType="Self.SYSUser" />
+          <EntitySet Name="SYSUserRoles" EntityType="Tools_RegistryModel.SYSUserRole" />
+          <AssociationSet Name="FK__SYSUserRo__LOOKU__4F7CD00D" Association="Tools_RegistryModel.FK__SYSUserRo__LOOKU__4F7CD00D">
+            <End Role="LOOKUPRole" EntitySet="LOOKUPRoles" />
+            <End Role="SYSUserRole" EntitySet="SYSUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SYSUserRo__SYSUs__5070F446" Association="Tools_RegistryModel.FK__SYSUserRo__SYSUs__5070F446">
+            <End Role="SYSUser" EntitySet="SYSUsers" />
+            <End Role="SYSUserRole" EntitySet="SYSUserRoles" />
+          </AssociationSet>
+          <EntitySet Name="PlantsCollections" EntityType="Tools_RegistryModel.PlantsCollection" />
+          <EntitySet Name="EmployeeProfiles" EntityType="Tools_RegistryModel.EmployeeProfile" />
+          <AssociationSet Name="FK__EmployeeP__SYSUs__7E37BEF6" Association="Tools_RegistryModel.FK__EmployeeP__SYSUs__7E37BEF6">
+            <End Role="SYSUser" EntitySet="SYSUsers" />
+            <End Role="EmployeeProfile" EntitySet="EmployeeProfiles" />
+          </AssociationSet>
+          <EntitySet Name="InstrumentInventories" EntityType="Tools_RegistryModel.InstrumentInventory" />
+          <AssociationSet Name="FK__Instrumen__Plant__787EE5A0" Association="Tools_RegistryModel.FK__Instrumen__Plant__787EE5A0">
+            <End Role="PlantsCollection" EntitySet="PlantsCollections" />
+            <End Role="InstrumentInventory" EntitySet="InstrumentInventories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Instrumen__SYSUs__797309D9" Association="Tools_RegistryModel.FK__Instrumen__SYSUs__797309D9">
+            <End Role="SYSUser" EntitySet="SYSUsers" />
+            <End Role="InstrumentInventory" EntitySet="InstrumentInventories" />
+          </AssociationSet>
+          <EntitySet Name="TOOL_CALIBRATION_VIEW" EntityType="Tools_RegistryModel.TOOL_CALIBRATION_VIEW" />
+          </EntityContainer>
+        <EntityType Name="SYSUserRole">
+          <Key>
+            <PropertyRef Name="SYSUserRoleID" />
+          </Key>
+          <Property Name="SYSUserRoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SYSUserID" Type="Int32" Nullable="false" />
+          <Property Name="LOOKUPRoleID" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="RowCreatedSYSUserID" Type="Int32" Nullable="false" />
+          <Property Name="RowCreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="RowModifiedSYSUserID" Type="Int32" Nullable="false" />
+          <Property Name="RowModifiedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="LOOKUPRole" Relationship="Tools_RegistryModel.FK__SYSUserRo__LOOKU__4F7CD00D" FromRole="SYSUserRole" ToRole="LOOKUPRole" />
+          <NavigationProperty Name="SYSUser" Relationship="Tools_RegistryModel.FK__SYSUserRo__SYSUs__5070F446" FromRole="SYSUserRole" ToRole="SYSUser" />
+        </EntityType>
+        <Association Name="FK__SYSUserRo__LOOKU__4F7CD00D">
+          <End Type="Tools_RegistryModel.LOOKUPRole" Role="LOOKUPRole" Multiplicity="1" />
+          <End Type="Tools_RegistryModel.SYSUserRole" Role="SYSUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOOKUPRole">
+              <PropertyRef Name="LOOKUPRoleID" />
+            </Principal>
+            <Dependent Role="SYSUserRole">
+              <PropertyRef Name="LOOKUPRoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SYSUserRo__SYSUs__5070F446">
+          <End Type="Tools_RegistryModel.SYSUser" Role="SYSUser" Multiplicity="1" />
+          <End Type="Tools_RegistryModel.SYSUserRole" Role="SYSUserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYSUser">
+              <PropertyRef Name="SYSUserID" />
+            </Principal>
+            <Dependent Role="SYSUserRole">
+              <PropertyRef Name="SYSUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PlantsCollection">
+          <Key>
+            <PropertyRef Name="PlantID" />
+          </Key>
+          <Property Name="PlantID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PlantDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RowCreatedSYSUserID" Type="Int32" Nullable="false" />
+          <Property Name="RowCReatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="RowModifiedSYSUserID" Type="Int32" Nullable="false" />
+          <Property Name="RowModifiedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="InstrumentInventories" Relationship="Tools_RegistryModel.FK__Instrumen__Plant__787EE5A0" FromRole="PlantsCollection" ToRole="InstrumentInventory" />
+        </EntityType>
+        <EntityType Name="EmployeeProfile">
+          <Key>
+            <PropertyRef Name="EmployeeProfileID" />
+          </Key>
+          <Property Name="EmployeeProfileID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="SYSUserID" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="RowCreatedSYSUserID" Type="Int32" Nullable="false" />
+          <Property Name="RowCreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="RowModifiedSYSUserID" Type="Int32" Nullable="false" />
+          <Property Name="RowModifiedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="SYSUser" Relationship="Tools_RegistryModel.FK__EmployeeP__SYSUs__7E37BEF6" FromRole="EmployeeProfile" ToRole="SYSUser" />
+        </EntityType>
+        <Association Name="FK__EmployeeP__SYSUs__7E37BEF6">
+          <End Type="Tools_RegistryModel.SYSUser" Role="SYSUser" Multiplicity="1" />
+          <End Type="Tools_RegistryModel.EmployeeProfile" Role="EmployeeProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYSUser">
+              <PropertyRef Name="SYSUserID" />
+            </Principal>
+            <Dependent Role="EmployeeProfile">
+              <PropertyRef Name="SYSUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="InstrumentInventory">
+          <Key>
+            <PropertyRef Name="InstrumentID" />
+          </Key>
+          <Property Name="InstrumentID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PlantID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SYSUserID" Type="Int32" Nullable="false" />
+          <Property Name="InstrumentBrand" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="InstrumentDesc" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CalibrationDueDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RowCreatedSYSUserID" Type="Int32" Nullable="false" />
+          <Property Name="RowCReatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="RowModifiedSYSUserID" Type="Int32" Nullable="false" />
+          <Property Name="RowModifiedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="Comments" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PlantsCollection" Relationship="Tools_RegistryModel.FK__Instrumen__Plant__787EE5A0" FromRole="InstrumentInventory" ToRole="PlantsCollection" />
+          <NavigationProperty Name="SYSUser" Relationship="Tools_RegistryModel.FK__Instrumen__SYSUs__797309D9" FromRole="InstrumentInventory" ToRole="SYSUser" />
+        </EntityType>
+        <Association Name="FK__Instrumen__Plant__787EE5A0">
+          <End Type="Tools_RegistryModel.PlantsCollection" Role="PlantsCollection" Multiplicity="1" />
+          <End Type="Tools_RegistryModel.InstrumentInventory" Role="InstrumentInventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlantsCollection">
+              <PropertyRef Name="PlantID" />
+            </Principal>
+            <Dependent Role="InstrumentInventory">
+              <PropertyRef Name="PlantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Instrumen__SYSUs__797309D9">
+          <End Type="Tools_RegistryModel.SYSUser" Role="SYSUser" Multiplicity="1" />
+          <End Type="Tools_RegistryModel.InstrumentInventory" Role="InstrumentInventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYSUser">
+              <PropertyRef Name="SYSUserID" />
+            </Principal>
+            <Dependent Role="InstrumentInventory">
+              <PropertyRef Name="SYSUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TOOL_CALIBRATION_VIEW">
+          <Key>
+            <PropertyRef Name="SYSUserID" />
+            <PropertyRef Name="EmployeeProfileID" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="EmailAddress" />
+            <PropertyRef Name="Location" />
+            <PropertyRef Name="InstrumentID" />
+            <PropertyRef Name="PlantID" />
+            <PropertyRef Name="InstrumentBrand" />
+            <PropertyRef Name="InstrumentDesc" />
+            <PropertyRef Name="CalibrationDueDate" />
+          </Key>
+          <Property Name="SYSUserID" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeProfileID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="InstrumentID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PlantID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InstrumentBrand" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="InstrumentDesc" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CalibrationDueDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Comments" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Tools_RegistryModelStoreContainer" CdmEntityContainer="Tools_Registry_Entities">
+          <EntitySetMapping Name="LOOKUPRoles">
+            <EntityTypeMapping TypeName="Tools_RegistryModel.LOOKUPRole">
+              <MappingFragment StoreEntitySet="LOOKUPRole">
+                <ScalarProperty Name="LOOKUPRoleID" ColumnName="LOOKUPRoleID" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleDesc" ColumnName="RoleDesc" />
+                <ScalarProperty Name="RowCreatedSYSUSerID" ColumnName="RowCreatedSYSUSerID" />
+                <ScalarProperty Name="RowCreatedDateTime" ColumnName="RowCreatedDateTime" />
+                <ScalarProperty Name="RowModifiedSYSUserID" ColumnName="RowModifiedSYSUserID" />
+                <ScalarProperty Name="RowModifiedDateTime" ColumnName="RowModifiedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SYSUsers">
+            <EntityTypeMapping TypeName="Tools_RegistryModel.SYSUser">
+              <MappingFragment StoreEntitySet="SYSUser">
+                <ScalarProperty Name="SYSUserID" ColumnName="SYSUserID" />
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="RowCreatedSYSUSerID" ColumnName="RowCreatedSYSUSerID" />
+                <ScalarProperty Name="RowCreatedDateTime" ColumnName="RowCreatedDateTime" />
+                <ScalarProperty Name="RowModifiedSYSUserID" ColumnName="RowModifiedSYSUserID" />
+                <ScalarProperty Name="RowModifiedDateTime" ColumnName="RowModifiedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SYSUserRoles">
+            <EntityTypeMapping TypeName="Tools_RegistryModel.SYSUserRole">
+              <MappingFragment StoreEntitySet="SYSUserRole">
+                <ScalarProperty Name="RowModifiedDateTime" ColumnName="RowModifiedDateTime" />
+                <ScalarProperty Name="RowModifiedSYSUserID" ColumnName="RowModifiedSYSUserID" />
+                <ScalarProperty Name="RowCreatedDateTime" ColumnName="RowCreatedDateTime" />
+                <ScalarProperty Name="RowCreatedSYSUserID" ColumnName="RowCreatedSYSUserID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LOOKUPRoleID" ColumnName="LOOKUPRoleID" />
+                <ScalarProperty Name="SYSUserID" ColumnName="SYSUserID" />
+                <ScalarProperty Name="SYSUserRoleID" ColumnName="SYSUserRoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlantsCollections">
+            <EntityTypeMapping TypeName="Tools_RegistryModel.PlantsCollection">
+              <MappingFragment StoreEntitySet="PlantsCollection">
+                <ScalarProperty Name="RowModifiedDateTime" ColumnName="RowModifiedDateTime" />
+                <ScalarProperty Name="RowModifiedSYSUserID" ColumnName="RowModifiedSYSUserID" />
+                <ScalarProperty Name="RowCReatedDateTime" ColumnName="RowCReatedDateTime" />
+                <ScalarProperty Name="RowCreatedSYSUserID" ColumnName="RowCreatedSYSUserID" />
+                <ScalarProperty Name="PlantDesc" ColumnName="PlantDesc" />
+                <ScalarProperty Name="PlantID" ColumnName="PlantID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeProfiles">
+            <EntityTypeMapping TypeName="Tools_RegistryModel.EmployeeProfile">
+              <MappingFragment StoreEntitySet="EmployeeProfile">
+                <ScalarProperty Name="RowModifiedDateTime" ColumnName="RowModifiedDateTime" />
+                <ScalarProperty Name="RowModifiedSYSUserID" ColumnName="RowModifiedSYSUserID" />
+                <ScalarProperty Name="RowCreatedDateTime" ColumnName="RowCreatedDateTime" />
+                <ScalarProperty Name="RowCreatedSYSUserID" ColumnName="RowCreatedSYSUserID" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="SYSUserID" ColumnName="SYSUserID" />
+                <ScalarProperty Name="EmployeeProfileID" ColumnName="EmployeeProfileID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InstrumentInventories">
+            <EntityTypeMapping TypeName="Tools_RegistryModel.InstrumentInventory">
+              <MappingFragment StoreEntitySet="InstrumentInventory">
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="RowModifiedDateTime" ColumnName="RowModifiedDateTime" />
+                <ScalarProperty Name="RowModifiedSYSUserID" ColumnName="RowModifiedSYSUserID" />
+                <ScalarProperty Name="RowCReatedDateTime" ColumnName="RowCReatedDateTime" />
+                <ScalarProperty Name="RowCreatedSYSUserID" ColumnName="RowCreatedSYSUserID" />
+                <ScalarProperty Name="CalibrationDueDate" ColumnName="CalibrationDueDate" />
+                <ScalarProperty Name="InstrumentDesc" ColumnName="InstrumentDesc" />
+                <ScalarProperty Name="InstrumentBrand" ColumnName="InstrumentBrand" />
+                <ScalarProperty Name="SYSUserID" ColumnName="SYSUserID" />
+                <ScalarProperty Name="PlantID" ColumnName="PlantID" />
+                <ScalarProperty Name="InstrumentID" ColumnName="InstrumentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TOOL_CALIBRATION_VIEW">
+            <EntityTypeMapping TypeName="Tools_RegistryModel.TOOL_CALIBRATION_VIEW">
+              <MappingFragment StoreEntitySet="TOOL_CALIBRATION_VIEW">
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="CalibrationDueDate" ColumnName="CalibrationDueDate" />
+                <ScalarProperty Name="InstrumentDesc" ColumnName="InstrumentDesc" />
+                <ScalarProperty Name="InstrumentBrand" ColumnName="InstrumentBrand" />
+                <ScalarProperty Name="PlantID" ColumnName="PlantID" />
+                <ScalarProperty Name="InstrumentID" ColumnName="InstrumentID" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="EmployeeProfileID" ColumnName="EmployeeProfileID" />
+                <ScalarProperty Name="SYSUserID" ColumnName="SYSUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

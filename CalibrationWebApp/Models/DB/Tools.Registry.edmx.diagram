@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2ee859b8582444638b16307135c47613" Name="Diagram1">
+        <EntityTypeShape EntityType="Tools_RegistryModel.LOOKUPRole" Width="1.875" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tools_RegistryModel.SYSUser" Width="2" PointX="0.875" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tools_RegistryModel.SYSUserRole" Width="2" PointX="3.125" PointY="0.5" />
+        <AssociationConnector Association="Tools_RegistryModel.FK__SYSUserRo__LOOKU__4F7CD00D" />
+        <AssociationConnector Association="Tools_RegistryModel.FK__SYSUserRo__SYSUs__5070F446" ></AssociationConnector>
+        <EntityTypeShape EntityType="Tools_RegistryModel.PlantsCollection" Width="1.875" PointX="5.75" PointY="5.375" />
+        <EntityTypeShape EntityType="Tools_RegistryModel.EmployeeProfile" Width="2" PointX="8.375" PointY="0.5" />
+        <AssociationConnector Association="Tools_RegistryModel.FK__EmployeeP__SYSUs__7E37BEF6" />
+        <EntityTypeShape EntityType="Tools_RegistryModel.InstrumentInventory" Width="2.25" PointX="5.625" PointY="0.5" />
+        <AssociationConnector Association="Tools_RegistryModel.FK__Instrumen__Plant__787EE5A0" />
+        <AssociationConnector Association="Tools_RegistryModel.FK__Instrumen__SYSUs__797309D9" />
+        <EntityTypeShape EntityType="Tools_RegistryModel.TOOL_CALIBRATION_VIEW" Width="2.375" PointX="10.75" PointY="0.5" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
